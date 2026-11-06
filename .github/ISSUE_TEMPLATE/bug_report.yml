@@ -1,0 +1,103 @@
+name: Bug report
+description: Report a problem with the Mina the Hollower randomizer
+labels: ["needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Please search the [open issues](https://github.com/Minapelago/bug-reports/issues) first.
+        If someone already reported your bug, add your log and details to that issue instead of opening a new one.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where did it happen?
+      options:
+        - While playing (the mod or connecting to the server)
+        - Generating a seed (locally or on the website)
+        - Logic (something was required before I could reach it)
+        - Universal Tracker
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Tell us what went wrong and what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What were you doing right before it happened? Include the area or room if you know it.
+  - type: checkboxes
+    id: impact
+    attributes:
+      label: Impact
+      description: Check any that apply.
+      options:
+        - label: A check wasn't sent
+        - label: An item wasn't received
+        - label: The game crashed or froze
+        - label: I'm stuck and can't continue the seed
+  - type: input
+    id: generated-world-version
+    attributes:
+      label: APWorld version used to generate the seed
+      description: If someone else generated the seed, ask them. Write "I don't know" if you can't find out.
+      placeholder: "0.0.0"
+    validations:
+      required: true
+  - type: input
+    id: local-world-version
+    attributes:
+      label: APWorld version installed on your computer
+      description: The release you installed the `.apworld` from. Write "I don't know" if you're not sure.
+      placeholder: "0.0.0"
+    validations:
+      required: true
+  - type: input
+    id: client-version
+    attributes:
+      label: Client (mod) version
+      description: Shown in the top-left corner of the game window, and at the top of the mthap log. Write "I don't know" if you can't find it.
+      placeholder: "0.0.0"
+    validations:
+      required: true
+  - type: input
+    id: game-version
+    attributes:
+      label: Game version
+      description: The r-number shown on the in-game Options menu.
+      placeholder: "r148667"
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - Linux / Steam Deck
+        - Other
+  - type: textarea
+    id: log
+    attributes:
+      label: Client log
+      description: >-
+        We can't fix most in-game bugs without this log, so please attach it.
+        Drag the log file into this box; pasting the contents works too.
+        If GitHub rejects the .log extension, zip it or rename it to .txt.
+        If the game crashed, also attach the crash dump from the same folder.
+        Windows: `%LOCALAPPDATA%\mth-apclient\mthap_<timestamp>.log`.
+        Linux: `~/.local/share/mth-apclient/mthap_<timestamp>.log`.
+        If you never launched the game (for example, generation failed), write "none".
+    validations:
+      required: true
+  - type: textarea
+    id: generation
+    attributes:
+      label: YAML and generation files
+      description: >-
+        Needed for generation and logic bugs.
+        Attach your player YAML. For a logic bug, also attach the spoiler log.
+        If generation failed locally, attach the Archipelago log as well (usually in `C:\ProgramData\Archipelago\logs` on Windows).
